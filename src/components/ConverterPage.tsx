@@ -8,6 +8,9 @@ import { useState, useRef, useEffect } from 'react'
 
 type Props = {
   category: ConversionCategory
+  initialFromValue?: string
+  initialFromUnit?: string
+  initialToUnit?: string
 }
 
 function useOutsideClick(
@@ -27,7 +30,12 @@ function useOutsideClick(
   }, [ref, callback])
 }
 
-export function ConverterPage({ category }: Props) {
+export function ConverterPage({
+  category,
+  initialFromValue,
+  initialFromUnit,
+  initialToUnit,
+}: Props) {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -82,7 +90,12 @@ export function ConverterPage({ category }: Props) {
                 </div>
               )}
             </div>
-            <UnitConverter category={category} />
+            <UnitConverter
+              category={category}
+              initialFromValue={initialFromValue}
+              initialFromUnit={initialFromUnit}
+              initialToUnit={initialToUnit}
+            />
           </div>
         </div>
         <div>

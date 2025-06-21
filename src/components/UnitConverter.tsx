@@ -1,10 +1,13 @@
 'use client'
 
 import { ConversionCategory, Unit } from '@/lib/conversions'
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 type Props = {
   category: ConversionCategory
+  initialFromValue?: string
+  initialFromUnit?: string
+  initialToUnit?: string
 }
 
 const convert = (
@@ -99,19 +102,63 @@ function CopyButton({
   )
 }
 
-export function UnitConverter({ category }: Props) {
-  const [fromUnit, setFromUnit] = useState<Unit>(category.units[0])
-  const [toUnit, setToUnit] = useState<Unit>(category.units[1])
-  const [fromValue, setFromValue] = useState<string>('1')
+export function UnitConverter({
+  category,
+  initialFromValue = '1',
+  initialFromUnit,
+  initialToUnit,
+}: Props) {
+  const findUnitBySymbol = useCallback(
+    (symbol?: string) => category.units.find((u) => u.symbol === symbol),
+    [category.units],
+  )
+
+  const [fromUnit, setFromUnit] = useState<Unit>(
+    () => findUnitBySymbol(initialFromUnit) || category.units[0],
+  )
+  const [toUnit, setToUnit] = useState<Unit>(
+    () => findUnitBySymbol(initialToUnit) || category.units[1],
+  )
+  const [fromValue, setFromValue] = useState<string>(initialFromValue)
   const [toValue, setToValue] = useState<string>(() => {
+    const from = findUnitBySymbol(initialFromUnit) || category.units[0]
+    const to = findUnitBySymbol(initialToUnit) || category.units[1]
     const result = convert(
-      1,
-      category.units[0],
-      category.units[1],
+      parseFloat(initialFromValue),
+      from,
+      to,
       category.type,
     )
     return result.toString()
   })
+
+  useEffect(() => {
+    const newFromUnit = findUnitBySymbol(initialFromUnit) || category.units[0]
+    const newToUnit = findUnitBySymbol(initialToUnit) || category.units[1]
+
+    setFromUnit(newFromUnit)
+    setToUnit(newToUnit)
+    setFromValue(initialFromValue)
+
+    const numericValue = parseFloat(initialFromValue)
+    if (!isNaN(numericValue)) {
+      const result = convert(
+        numericValue,
+        newFromUnit,
+        newToUnit,
+        category.type,
+      )
+      setToValue(result.toString())
+    } else {
+      setToValue('')
+    }
+  }, [
+    initialFromValue,
+    initialFromUnit,
+    initialToUnit,
+    category,
+    findUnitBySymbol,
+  ])
 
   const handleFromValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
