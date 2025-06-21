@@ -27,7 +27,7 @@ export function Header() {
             <Link
               key={category.path}
               href={category.path}
-              className={`text-sm font-medium ${
+              className={`text-base font-medium ${
                 pathname === category.path ? '' : 'text-muted-foreground'
               } hover:text-primary transition-colors`}
             >
