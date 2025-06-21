@@ -229,18 +229,22 @@ export function UnitConverter({ category }: Props) {
           className="absolute top-2 right-2"
         />
         <p className="text-muted-foreground font-semibold">Result:</p>
-        <div className="mt-2 flex flex-wrap items-center justify-center gap-x-2 text-2xl font-bold">
-          <code className="bg-accent text-accent-foreground inline-flex items-center rounded-md px-2 py-1 font-mono">
-            {fromValue || 0}
-            <CopyButton textToCopy={fromValue} className="ml-2" />
-          </code>
-          <span>{fromUnit.name}</span>
+        <div className="mt-2 flex flex-col items-center justify-center gap-2 text-2xl font-bold sm:flex-row sm:flex-wrap sm:gap-x-2">
+          <div className="flex items-center gap-x-2">
+            <code className="bg-accent text-accent-foreground inline-flex items-center rounded-md px-2 py-1 font-mono">
+              <CopyButton textToCopy={fromValue} className="mr-2" />
+              {fromValue || 0}
+            </code>
+            <span>{fromUnit.name}</span>
+          </div>
           <span>=</span>
-          <code className="bg-accent text-accent-foreground inline-flex items-center rounded-md px-2 py-1 font-mono">
-            {toValue || '...'}
-            <CopyButton textToCopy={toValue} className="ml-2" />
-          </code>
-          <span>{toUnit.name}</span>
+          <div className="flex items-center gap-x-2">
+            <code className="bg-accent text-accent-foreground inline-flex items-center rounded-md px-2 py-1 font-mono">
+              {toValue || '...'}
+              <CopyButton textToCopy={toValue} className="ml-2" />
+            </code>
+            <span>{toUnit.name}</span>
+          </div>
         </div>
       </div>
     </>
