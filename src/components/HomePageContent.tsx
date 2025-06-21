@@ -6,7 +6,7 @@ export function HomePageContent() {
       <div className="space-y-12">
         <section>
           <h2 className="mb-3 text-3xl font-bold tracking-tight">
-            A Measurement Converter That Simply Works
+            An Easy Measurement Converter Website
           </h2>
           <p className="text-muted-foreground max-w-4xl text-lg">
             Tired of wrestling with confusing numbers and formulas? Whether

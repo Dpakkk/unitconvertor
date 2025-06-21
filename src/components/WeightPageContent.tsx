@@ -46,93 +46,100 @@ function Table({
   )
 }
 
-export function LengthPageContent() {
+export function WeightPageContent() {
   const popularConversions = {
     headers: ['From Unit', 'To Unit', 'Conversion Factor'],
     rows: [
-      ['Inch (in)', 'Centimeter (cm)', '2.54'],
-      ['Centimeter (cm)', 'Inch (in)', '0.3937'],
-      ['Foot (ft)', 'Meter (m)', '0.3048'],
-      ['Meter (m)', 'Foot (ft)', '3.28084'],
-      ['Mile (mi)', 'Kilometer (km)', '1.60934'],
-      ['Kilometer (km)', 'Mile (mi)', '0.62137'],
-      ['Yard (yd)', 'Meter (m)', '0.9144'],
-      ['Meter (m)', 'Yard (yd)', '1.09361'],
+      ['Gram (g)', 'Ounce (oz)', '0.035274'],
+      ['Ounce (oz)', 'Gram (g)', '28.3495'],
+      ['Kilogram (kg)', 'Pound (lb)', '2.20462'],
+      ['Pound (lb)', 'Kilogram (kg)', '0.453592'],
+      ['Milligram (mg)', 'Gram (g)', '0.001'],
+      ['Gram (g)', 'Milligram (mg)', '1000'],
+      ['Pound (lb)', 'Ounce (oz)', '16'],
+      ['Ounce (oz)', 'Pound (lb)', '0.0625'],
     ],
   }
 
   const commonUnits = {
     headers: ['System', 'Unit Name', 'Symbol', 'Approximate Real-World Scale'],
     rows: [
-      ['Metric (SI)', 'Millimeter', 'mm', 'Thickness of a credit card'],
-      ['Metric (SI)', 'Centimeter', 'cm', 'Width of a fingernail'],
-      ['Metric (SI)', 'Meter', 'm', 'Height of a doorway'],
-      ['Metric (SI)', 'Kilometer', 'km', 'A 10-minute walk'],
-      ['Imperial/US', 'Inch', 'in', 'Length of a thumb'],
-      ['Imperial/US', 'Foot', 'ft', 'Length of an adult foot'],
-      ['Imperial/US', 'Yard', 'yd', 'Length of a baseball bat'],
-      ['Imperial/US', 'Mile', 'mi', 'A 20-minute walk'],
-      ['Astronomical', 'Light-year', 'ly', 'Distance light travels in a year'],
+      ['Metric (SI)', 'Microgram', 'µg', 'A few grains of sand'],
+      ['Metric (SI)', 'Milligram', 'mg', 'A single grain of salt'],
+      ['Metric (SI)', 'Gram', 'g', 'A paperclip'],
+      ['Metric (SI)', 'Kilogram', 'kg', 'A bag of sugar'],
+      ['Imperial/US', 'Ounce', 'oz', 'A slice of bread'],
+      ['Imperial/US', 'Pound', 'lb', 'A bag of flour'],
+      ['Specialized', 'Carat', 'ct', 'Used for gemstones (200 mg)'],
+      [
+        'Specialized',
+        'Troy Ounce',
+        'troy oz',
+        'Used for precious metals (31.1 g)',
+      ],
     ],
   }
+
   return (
     <div className="container mx-auto mt-16 px-4">
       <div className="space-y-12">
         <section>
           <h2 className="mb-3 text-3xl font-bold tracking-tight">
-            Length Conversion: Meters, Feet, Inches & More
+            Weight Conversion: Kilograms, Pounds, Ounces & More
           </h2>
           <p className="text-muted-foreground max-w-4xl text-lg">
-            Instantly convert any length unit – from inches to centimeters,
-            miles to kilometers, and everything in between. Our precise tool
-            makes complex calculations simple and fast, empowering you with
-            accurate measurements for any project or purpose.
+            From perfecting a delicate recipe in the kitchen to ensuring precise
+            medication dosages in healthcare, or calculating shipping costs for
+            international freight, accurate weight conversion is a daily
+            necessity. Our comprehensive Weight Converter simplifies these
+            essential tasks, providing reliable and instant results for every
+            scenario.
           </p>
         </section>
 
         <section>
           <h2 className="mb-4 text-3xl font-bold tracking-tight">
-            Why Convert Length? Bridging the Gap Between Measurements
+            Why Convert Weight? The Critical Role of Accurate Measurement
           </h2>
           <p className="text-muted-foreground">
-            Length conversion is the process of translating a measurement from
-            one unit to another, like changing inches into centimeters.
-            It&apos;s a skill we all use, and it&apos;s essential in our
-            interconnected world. From measuring a room for new furniture to
-            understanding distances on a map, length conversion is everywhere.
+            Weight measurement is fundamental in physics and everyday life,
+            influencing everything from cooking recipes to industrial
+            production. People convert weight units for a multitude of reasons,
+            including international trade, scientific research, and ensuring
+            accuracy in various tasks.
           </p>
           <p className="text-muted-foreground">
-            The primary reason we need conversion tools is the coexistence of
-            different measurement systems. The metric system (SI) is used by
-            most of the world, while the United States and a few other countries
-            use the imperial or US customary system. Our converter helps you
-            seamlessly navigate between them.
+            Whether you&apos;re a home baker adjusting a recipe from grams to
+            ounces, a fitness enthusiast tracking progress in kilograms and
+            pounds, or a professional in science or logistics, precise weight
+            conversion is indispensable. Our intuitive Weight Converter is
+            designed to make every measurement seamless and accurate.
           </p>
         </section>
 
         <section>
           <h2 className="mb-4 text-3xl font-bold tracking-tight">
-            Understanding Length Units: Metric vs. Imperial
+            Common Weight Units by System
           </h2>
           <p className="text-muted-foreground mb-4">
-            The world of measurement is broadly divided into two systems: the
-            Metric System (SI) and the Imperial/US Customary System. The metric
-            system is based on powers of ten, making conversions
-            straightforward. In contrast, imperial units like inches, feet, and
-            miles evolved from older traditions. Our tool handles both, ensuring
-            you always get the right measurement.
+            To truly master weight conversions, it&apos;s helpful to understand
+            the difference between mass and weight. Mass is the amount of matter
+            an object contains (e.g., kilograms), while weight is the
+            gravitational force on it. In everyday use, these terms are
+            interchangeable, and our tool helps you convert all common units of
+            mass.
           </p>
           <Table headers={commonUnits.headers} rows={commonUnits.rows} />
         </section>
 
         <section>
           <h2 className="mb-4 text-3xl font-bold tracking-tight">
-            Your Most Asked-For Length Conversions
+            Your Most Asked-For Weight Conversions
           </h2>
           <p className="text-muted-foreground mb-4">
-            Based on what people search for most, here are the most common
-            length conversion pairs. Our tool makes these, and many more,
-            effortless.
+            Here are the most common weight conversion pairs, along with their
+            conversion factors. Our tool handles these, and many more, with
+            ease.
           </p>
           <Table
             headers={popularConversions.headers}
@@ -142,31 +149,35 @@ export function LengthPageContent() {
 
         <section>
           <h2 className="mb-4 text-3xl font-bold tracking-tight">
-            FAQs about Length Conversion
+            FAQs about Weight Conversion
           </h2>
           <div className="space-y-4">
             <div className="rounded-lg border p-4">
-              <p className="font-semibold">What is 32 cm in inches?</p>
+              <p className="font-semibold">
+                How many grams are in an ounce for baking?
+              </p>
               <p className="text-muted-foreground mt-1">
-                There are approximately 12.6 inches in 32 centimeters. To
-                convert, you divide the centimeter value by 2.54.
+                There are approximately 28.35 grams in one ounce. To convert,
+                multiply the ounce value by 28.35. For example, 4 oz of butter
+                is about 113.4 grams.
               </p>
             </div>
             <div className="rounded-lg border p-4">
               <p className="font-semibold">
-                What is the smallest unit of length?
+                How do I convert 150 lbs to kg for my workout?
               </p>
               <p className="text-muted-foreground mt-1">
-                The smallest theoretical unit is Planck Length, used in quantum
-                physics. In practical terms, units like angstroms or picometers
-                are used for atomic-scale measurements.
+                To convert pounds to kilograms, multiply the pound value by
+                0.453592. So, 150 lbs is approximately 68.04 kg.
               </p>
             </div>
             <div className="rounded-lg border p-4">
-              <p className="font-semibold">How do you convert cm to inches?</p>
+              <p className="font-semibold">
+                What is the formula for converting milligrams to grams?
+              </p>
               <p className="text-muted-foreground mt-1">
-                To convert centimeters to inches, you divide the number of
-                centimeters by 2.54. For example, 10 cm ÷ 2.54 ≈ 3.94 inches.
+                To convert milligrams (mg) to grams (g), you divide the
+                milligram value by 1,000. For example, 500 mg is equal to 0.5 g.
               </p>
             </div>
           </div>
@@ -177,16 +188,16 @@ export function LengthPageContent() {
             Explore Our Full Suite of Unit Conversion Tools
           </h2>
           <p className="text-muted-foreground">
-            Length is just the beginning! UnitConvertor.co is your comprehensive
-            hub for all kinds of measurements. Explore our other powerful and
-            easy-to-use tools:
+            Weight is just one piece of the puzzle! UnitConvertor.co is your
+            comprehensive hub for all kinds of measurements. Explore our other
+            powerful and easy-to-use tools:
           </p>
           <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
             <Link
-              href="/weight"
+              href="/length"
               className="bg-card text-card-foreground hover:bg-accent rounded-lg border p-4 transition-colors"
             >
-              Weight Conversion
+              Length Conversion
             </Link>
             <Link
               href="/temperature"

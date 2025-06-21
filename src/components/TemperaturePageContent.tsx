@@ -46,93 +46,85 @@ function Table({
   )
 }
 
-export function LengthPageContent() {
-  const popularConversions = {
-    headers: ['From Unit', 'To Unit', 'Conversion Factor'],
+export function TemperaturePageContent() {
+  const keyTemperatures = {
+    headers: ['Description', 'Celsius (°C)', 'Fahrenheit (°F)', 'Kelvin (K)'],
     rows: [
-      ['Inch (in)', 'Centimeter (cm)', '2.54'],
-      ['Centimeter (cm)', 'Inch (in)', '0.3937'],
-      ['Foot (ft)', 'Meter (m)', '0.3048'],
-      ['Meter (m)', 'Foot (ft)', '3.28084'],
-      ['Mile (mi)', 'Kilometer (km)', '1.60934'],
-      ['Kilometer (km)', 'Mile (mi)', '0.62137'],
-      ['Yard (yd)', 'Meter (m)', '0.9144'],
-      ['Meter (m)', 'Yard (yd)', '1.09361'],
+      ['Absolute Zero', '-273.15', '-459.67', '0'],
+      ['Freezing Point of Water', '0', '32', '273.15'],
+      ['Room Temperature (approx.)', '20-25', '68-77', '293.15-298.15'],
+      ['Normal Human Body Temperature', '37', '98.6', '310.15'],
+      ['Boiling Point of Water', '100', '212', '373.15'],
     ],
   }
 
-  const commonUnits = {
-    headers: ['System', 'Unit Name', 'Symbol', 'Approximate Real-World Scale'],
+  const popularConversions = {
+    headers: ['From Unit', 'To Unit', 'Formula'],
     rows: [
-      ['Metric (SI)', 'Millimeter', 'mm', 'Thickness of a credit card'],
-      ['Metric (SI)', 'Centimeter', 'cm', 'Width of a fingernail'],
-      ['Metric (SI)', 'Meter', 'm', 'Height of a doorway'],
-      ['Metric (SI)', 'Kilometer', 'km', 'A 10-minute walk'],
-      ['Imperial/US', 'Inch', 'in', 'Length of a thumb'],
-      ['Imperial/US', 'Foot', 'ft', 'Length of an adult foot'],
-      ['Imperial/US', 'Yard', 'yd', 'Length of a baseball bat'],
-      ['Imperial/US', 'Mile', 'mi', 'A 20-minute walk'],
-      ['Astronomical', 'Light-year', 'ly', 'Distance light travels in a year'],
+      ['Celsius (°C)', 'Fahrenheit (°F)', '(°C × 1.8) + 32'],
+      ['Fahrenheit (°F)', 'Celsius (°C)', '(°F - 32) / 1.8'],
+      ['Celsius (°C)', 'Kelvin (K)', '°C + 273.15'],
+      ['Kelvin (K)', 'Celsius (°C)', 'K - 273.15'],
+      ['Fahrenheit (°F)', 'Kelvin (K)', '((°F - 32) / 1.8) + 273.15'],
+      ['Kelvin (K)', 'Fahrenheit (°F)', '(K - 273.15) × 1.8 + 32'],
     ],
   }
+
   return (
     <div className="container mx-auto mt-16 px-4">
       <div className="space-y-12">
         <section>
           <h2 className="mb-3 text-3xl font-bold tracking-tight">
-            Length Conversion: Meters, Feet, Inches & More
+            Temperature Conversion: Celsius, Fahrenheit, Kelvin & More
           </h2>
           <p className="text-muted-foreground max-w-4xl text-lg">
-            Instantly convert any length unit – from inches to centimeters,
-            miles to kilometers, and everything in between. Our precise tool
-            makes complex calculations simple and fast, empowering you with
-            accurate measurements for any project or purpose.
+            From checking the weather forecast in a foreign country to following
+            a precise baking recipe, or conducting critical scientific
+            experiments, understanding and converting temperature units is a
+            daily necessity. Our intuitive Temperature Converter simplifies
+            these essential tasks, providing reliable and instant results for
+            every scenario.
           </p>
         </section>
 
         <section>
           <h2 className="mb-4 text-3xl font-bold tracking-tight">
-            Why Convert Length? Bridging the Gap Between Measurements
+            Why Convert Temperature? Navigating a World of Different Scales
           </h2>
           <p className="text-muted-foreground">
-            Length conversion is the process of translating a measurement from
-            one unit to another, like changing inches into centimeters.
-            It&apos;s a skill we all use, and it&apos;s essential in our
-            interconnected world. From measuring a room for new furniture to
-            understanding distances on a map, length conversion is everywhere.
-          </p>
-          <p className="text-muted-foreground">
-            The primary reason we need conversion tools is the coexistence of
-            different measurement systems. The metric system (SI) is used by
-            most of the world, while the United States and a few other countries
-            use the imperial or US customary system. Our converter helps you
-            seamlessly navigate between them.
+            Temperature conversion is the process of translating a measurement
+            from one scale to another. When you&apos;re traveling abroad,
+            knowing that 25°C is a pleasant 77°F can make all the difference.
+            For cooking, converting 180°C to 350°F ensures your recipes turn out
+            perfectly. In science and healthcare, precise conversions are
+            absolutely critical.
           </p>
         </section>
 
         <section>
           <h2 className="mb-4 text-3xl font-bold tracking-tight">
-            Understanding Length Units: Metric vs. Imperial
+            Understanding Temperature Scales: Celsius, Fahrenheit, and Kelvin
           </h2>
           <p className="text-muted-foreground mb-4">
-            The world of measurement is broadly divided into two systems: the
-            Metric System (SI) and the Imperial/US Customary System. The metric
-            system is based on powers of ten, making conversions
-            straightforward. In contrast, imperial units like inches, feet, and
-            miles evolved from older traditions. Our tool handles both, ensuring
-            you always get the right measurement.
+            The world of temperature is dominated by three main scales: Celsius
+            (°C), Fahrenheit (°F), and Kelvin (K). Celsius is the metric
+            standard, Fahrenheit is common in the US, and Kelvin is the absolute
+            scale used in science. Our tool handles all three seamlessly.
           </p>
-          <Table headers={commonUnits.headers} rows={commonUnits.rows} />
+          <Table
+            headers={keyTemperatures.headers}
+            rows={keyTemperatures.rows}
+          />
         </section>
 
         <section>
           <h2 className="mb-4 text-3xl font-bold tracking-tight">
-            Your Most Asked-For Length Conversions
+            How Temperature Conversion Works: Simple Formulas
           </h2>
           <p className="text-muted-foreground mb-4">
-            Based on what people search for most, here are the most common
-            length conversion pairs. Our tool makes these, and many more,
-            effortless.
+            While our converter does the heavy lifting, knowing the basic
+            formulas can help you understand the relationships between scales.
+            Here are the most common conversion formulas.
           </p>
           <Table
             headers={popularConversions.headers}
@@ -142,31 +134,34 @@ export function LengthPageContent() {
 
         <section>
           <h2 className="mb-4 text-3xl font-bold tracking-tight">
-            FAQs about Length Conversion
+            FAQs about Temperature Conversion
           </h2>
           <div className="space-y-4">
             <div className="rounded-lg border p-4">
-              <p className="font-semibold">What is 32 cm in inches?</p>
+              <p className="font-semibold">
+                What is the formula to convert Celsius to Fahrenheit?
+              </p>
               <p className="text-muted-foreground mt-1">
-                There are approximately 12.6 inches in 32 centimeters. To
-                convert, you divide the centimeter value by 2.54.
+                The formula is: °F = (°C × 1.8) + 32.
               </p>
             </div>
             <div className="rounded-lg border p-4">
               <p className="font-semibold">
-                What is the smallest unit of length?
+                What is the boiling point of water?
               </p>
               <p className="text-muted-foreground mt-1">
-                The smallest theoretical unit is Planck Length, used in quantum
-                physics. In practical terms, units like angstroms or picometers
-                are used for atomic-scale measurements.
+                At standard atmospheric pressure, water boils at 100°C, 212°F,
+                or 373.15 K.
               </p>
             </div>
             <div className="rounded-lg border p-4">
-              <p className="font-semibold">How do you convert cm to inches?</p>
+              <p className="font-semibold">
+                Is there a temperature where Celsius and Fahrenheit are the
+                same?
+              </p>
               <p className="text-muted-foreground mt-1">
-                To convert centimeters to inches, you divide the number of
-                centimeters by 2.54. For example, 10 cm ÷ 2.54 ≈ 3.94 inches.
+                Yes, the two scales converge at -40 degrees. So, -40°C is equal
+                to -40°F.
               </p>
             </div>
           </div>
@@ -177,22 +172,21 @@ export function LengthPageContent() {
             Explore Our Full Suite of Unit Conversion Tools
           </h2>
           <p className="text-muted-foreground">
-            Length is just the beginning! UnitConvertor.co is your comprehensive
-            hub for all kinds of measurements. Explore our other powerful and
-            easy-to-use tools:
+            Temperature is just one piece of the puzzle! UnitConvertor.co is
+            your comprehensive hub for all kinds of measurements.
           </p>
           <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+            <Link
+              href="/length"
+              className="bg-card text-card-foreground hover:bg-accent rounded-lg border p-4 transition-colors"
+            >
+              Length Conversion
+            </Link>
             <Link
               href="/weight"
               className="bg-card text-card-foreground hover:bg-accent rounded-lg border p-4 transition-colors"
             >
               Weight Conversion
-            </Link>
-            <Link
-              href="/temperature"
-              className="bg-card text-card-foreground hover:bg-accent rounded-lg border p-4 transition-colors"
-            >
-              Temperature Conversion
             </Link>
             <Link
               href="/area"
