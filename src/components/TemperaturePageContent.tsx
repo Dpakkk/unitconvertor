@@ -177,31 +177,31 @@ export function TemperaturePageContent() {
           </p>
           <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
             <Link
-              href="/length"
+              href="/length-converter"
               className="bg-card text-card-foreground hover:bg-accent rounded-lg border p-4 transition-colors"
             >
               Length Conversion
             </Link>
             <Link
-              href="/weight"
+              href="/weight-converter"
               className="bg-card text-card-foreground hover:bg-accent rounded-lg border p-4 transition-colors"
             >
               Weight Conversion
             </Link>
             <Link
-              href="/area"
+              href="/area-converter"
               className="bg-card text-card-foreground hover:bg-accent rounded-lg border p-4 transition-colors"
             >
               Area Conversion
             </Link>
             <Link
-              href="/volume"
+              href="/volume-converter"
               className="bg-card text-card-foreground hover:bg-accent rounded-lg border p-4 transition-colors"
             >
               Volume Conversion
             </Link>
             <Link
-              href="/time"
+              href="/time-converter"
               className="bg-card text-card-foreground hover:bg-accent rounded-lg border p-4 transition-colors"
             >
               Time Conversion

@@ -15,7 +15,7 @@ export type ConversionCategory = {
 export const conversions: ConversionCategory[] = [
   {
     name: 'Length',
-    path: '/length',
+    path: '/length-converter',
     baseUnit: 'meter',
     units: [
       { name: 'Meter', symbol: 'm', factor: 1 },
@@ -31,7 +31,7 @@ export const conversions: ConversionCategory[] = [
   },
   {
     name: 'Weight',
-    path: '/weight',
+    path: '/weight-converter',
     baseUnit: 'gram',
     units: [
       { name: 'Gram', symbol: 'g', factor: 1 },
@@ -44,7 +44,7 @@ export const conversions: ConversionCategory[] = [
   },
   {
     name: 'Temperature',
-    path: '/temperature',
+    path: '/temperature-converter',
     baseUnit: 'celsius',
     units: [
       { name: 'Celsius', symbol: '°C', factor: 1 },
@@ -55,7 +55,7 @@ export const conversions: ConversionCategory[] = [
   },
   {
     name: 'Area',
-    path: '/area',
+    path: '/area-converter',
     baseUnit: 'square meter',
     units: [
       { name: 'Square Meter', symbol: 'm²', factor: 1 },
@@ -69,7 +69,7 @@ export const conversions: ConversionCategory[] = [
   },
   {
     name: 'Volume',
-    path: '/volume',
+    path: '/volume-converter',
     baseUnit: 'liter',
     units: [
       { name: 'Liter', symbol: 'L', factor: 1 },
@@ -84,7 +84,7 @@ export const conversions: ConversionCategory[] = [
   },
   {
     name: 'Time',
-    path: '/time',
+    path: '/time-converter',
     baseUnit: 'second',
     units: [
       { name: 'Second', symbol: 's', factor: 1 },

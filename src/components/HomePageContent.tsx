@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 export function HomePageContent() {
   return (
@@ -184,6 +185,50 @@ export function HomePageContent() {
                 get converting right away.
               </p>
             </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight">
+            Available Converters
+          </h2>
+          <div className="mt-8 grid grid-cols-2 gap-4 text-center sm:grid-cols-3 lg:grid-cols-6">
+            <Link
+              href="/length-converter"
+              className="bg-card text-card-foreground hover:bg-accent focus:ring-ring rounded-lg border p-4 transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none"
+            >
+              Length
+            </Link>
+            <Link
+              href="/weight-converter"
+              className="bg-card text-card-foreground hover:bg-accent focus:ring-ring rounded-lg border p-4 transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none"
+            >
+              Weight
+            </Link>
+            <Link
+              href="/temperature-converter"
+              className="bg-card text-card-foreground hover:bg-accent focus:ring-ring rounded-lg border p-4 transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none"
+            >
+              Temperature
+            </Link>
+            <Link
+              href="/volume-converter"
+              className="bg-card text-card-foreground hover:bg-accent focus:ring-ring rounded-lg border p-4 transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none"
+            >
+              Volume
+            </Link>
+            <Link
+              href="/area-converter"
+              className="bg-card text-card-foreground hover:bg-accent focus:ring-ring rounded-lg border p-4 transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none"
+            >
+              Area
+            </Link>
+            <Link
+              href="/time-converter"
+              className="bg-card text-card-foreground hover:bg-accent focus:ring-ring rounded-lg border p-4 transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none"
+            >
+              Time
+            </Link>
           </div>
         </section>
       </div>

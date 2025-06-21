@@ -3,7 +3,9 @@ import { HomePageContent } from '@/components/HomePageContent'
 import { conversions } from '@/lib/conversions'
 
 export default function Home() {
-  const lengthCategory = conversions.find((cat) => cat.path === '/length')
+  const lengthCategory = conversions.find(
+    (cat) => cat.path === '/length-converter',
+  )
 
   if (!lengthCategory) {
     return <div>Length category not found.</div>

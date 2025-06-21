@@ -14,10 +14,10 @@ export function Sidebar() {
         {conversions.map((category) => (
           <li key={category.path}>
             <Link
-              href={category.path === '/length' ? '/' : category.path}
+              href={category.path === '/length-converter' ? '/' : category.path}
               className={`hover:text-primary block text-sm transition-colors ${
                 pathname === category.path ||
-                (pathname === '/' && category.path === '/length')
+                (pathname === '/' && category.path === '/length-converter')
                   ? 'text-primary font-semibold'
                   : 'text-muted-foreground'
               }`}

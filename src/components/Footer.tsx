@@ -21,7 +21,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-muted-foreground max-w-xs text-sm">
-              A simple, fast, and elegant unit converter for all your needs.
+              Online Unit Converter for All Measurements
             </p>
           </div>
 
