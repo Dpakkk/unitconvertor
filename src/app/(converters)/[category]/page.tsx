@@ -2,6 +2,7 @@ import { conversions } from '@/lib/conversions'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { ConverterPage } from '@/components/ConverterPage'
+import { LengthPageContent } from '@/components/LengthPageContent'
 
 type Props = {
   params: {
@@ -33,5 +34,10 @@ export default function CategoryPage({ params }: Props) {
     notFound()
   }
 
-  return <ConverterPage category={categoryData} />
+  return (
+    <>
+      <ConverterPage category={categoryData} />
+      {categoryData.name === 'Length' && <LengthPageContent />}
+    </>
+  )
 }
