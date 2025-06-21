@@ -35,6 +35,70 @@ const convert = (
   return (value * from.factor) / to.factor
 }
 
+function CopyButton({
+  textToCopy,
+  className,
+}: {
+  textToCopy: string
+  className?: string
+}) {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = () => {
+    if (!textToCopy) return
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
+  }
+
+  return (
+    <div className={`relative inline-flex ${className || ''}`}>
+      <button
+        onClick={handleCopy}
+        className="text-muted-foreground hover:text-foreground p-1"
+        aria-label="Copy value"
+      >
+        {copied ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+          </svg>
+        )}
+      </button>
+      {copied && (
+        <div className="bg-foreground text-background absolute bottom-full left-1/2 mb-1 -translate-x-1/2 transform rounded-md px-2 py-1 text-xs whitespace-nowrap">
+          Copied!
+        </div>
+      )}
+    </div>
+  )
+}
+
 export function UnitConverter({ category }: Props) {
   const [fromUnit, setFromUnit] = useState<Unit>(category.units[0])
   const [toUnit, setToUnit] = useState<Unit>(category.units[1])
@@ -97,46 +161,88 @@ export function UnitConverter({ category }: Props) {
     }
   }
 
+  const fullResultString = `${fromValue || 0} ${fromUnit.name} = ${
+    toValue || '...'
+  } ${toUnit.name}`
+
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <div>
-        <select
-          value={fromUnit.symbol}
-          onChange={handleFromUnitChange}
-          className="mb-2 w-full rounded border bg-transparent p-2"
-        >
-          {category.units.map((unit) => (
-            <option key={unit.symbol} value={unit.symbol}>
-              {unit.name} ({unit.symbol})
-            </option>
-          ))}
-        </select>
-        <input
-          type="number"
-          value={fromValue}
-          onChange={handleFromValueChange}
-          className="w-full rounded border bg-transparent p-2"
-        />
+    <>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div>
+          <label
+            htmlFor="from-unit"
+            className="text-muted-foreground mb-1 block text-sm font-medium"
+          >
+            From:
+          </label>
+          <select
+            id="from-unit"
+            value={fromUnit.symbol}
+            onChange={handleFromUnitChange}
+            className="mb-2 w-full rounded border bg-transparent p-2"
+          >
+            {category.units.map((unit) => (
+              <option key={unit.symbol} value={unit.symbol}>
+                {unit.name} ({unit.symbol})
+              </option>
+            ))}
+          </select>
+          <input
+            type="number"
+            aria-label="From Value"
+            value={fromValue}
+            onChange={handleFromValueChange}
+            className="w-full rounded border bg-transparent p-2"
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="to-unit"
+            className="text-muted-foreground mb-1 block text-sm font-medium"
+          >
+            To:
+          </label>
+          <select
+            id="to-unit"
+            value={toUnit.symbol}
+            onChange={handleToUnitChange}
+            className="mb-2 w-full rounded border bg-transparent p-2"
+          >
+            {category.units.map((unit) => (
+              <option key={unit.symbol} value={unit.symbol}>
+                {unit.name} ({unit.symbol})
+              </option>
+            ))}
+          </select>
+          <input
+            type="number"
+            aria-label="To Value"
+            value={toValue}
+            onChange={handleToValueChange}
+            className="w-full rounded border bg-transparent p-2"
+          />
+        </div>
       </div>
-      <div>
-        <select
-          value={toUnit.symbol}
-          onChange={handleToUnitChange}
-          className="mb-2 w-full rounded border bg-transparent p-2"
-        >
-          {category.units.map((unit) => (
-            <option key={unit.symbol} value={unit.symbol}>
-              {unit.name} ({unit.symbol})
-            </option>
-          ))}
-        </select>
-        <input
-          type="number"
-          value={toValue}
-          onChange={handleToValueChange}
-          className="w-full rounded border bg-transparent p-2"
+      <div className="bg-background relative mt-6 rounded-lg border p-4 text-center text-lg">
+        <CopyButton
+          textToCopy={fullResultString}
+          className="absolute top-2 right-2"
         />
+        <p className="text-muted-foreground font-semibold">Result:</p>
+        <div className="mt-2 flex flex-wrap items-center justify-center gap-x-2 text-2xl font-bold">
+          <code className="bg-accent text-accent-foreground inline-flex items-center rounded-md px-2 py-1 font-mono">
+            {fromValue || 0}
+            <CopyButton textToCopy={fromValue} className="ml-2" />
+          </code>
+          <span>{fromUnit.name}</span>
+          <span>=</span>
+          <code className="bg-accent text-accent-foreground inline-flex items-center rounded-md px-2 py-1 font-mono">
+            {toValue || '...'}
+            <CopyButton textToCopy={toValue} className="ml-2" />
+          </code>
+          <span>{toUnit.name}</span>
+        </div>
       </div>
-    </div>
+    </>
   )
 }

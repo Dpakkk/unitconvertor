@@ -1,7 +1,7 @@
 import { conversions } from '@/lib/conversions'
 import { notFound } from 'next/navigation'
-import { UnitConverter } from '@/components/UnitConverter'
 import { Metadata } from 'next'
+import { ConverterPage } from '@/components/ConverterPage'
 
 type Props = {
   params: {
@@ -33,10 +33,5 @@ export default function CategoryPage({ params }: Props) {
     notFound()
   }
 
-  return (
-    <main className="container mx-auto p-4">
-      <h2 className="mb-4 text-2xl font-bold">{categoryData.name}</h2>
-      <UnitConverter category={categoryData} />
-    </main>
-  )
+  return <ConverterPage category={categoryData} />
 }

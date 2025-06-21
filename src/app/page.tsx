@@ -1,8 +1,12 @@
+import { conversions } from '@/lib/conversions'
+import { ConverterPage } from '@/components/ConverterPage'
+
 export default function Home() {
-  return (
-    <main className="container mx-auto p-4">
-      <h2 className="mb-4 text-2xl font-bold">Unit Converters</h2>
-      <p>Select a converter from the navigation.</p>
-    </main>
-  )
+  const lengthCategory = conversions.find((c) => c.path === '/length')
+
+  if (!lengthCategory) {
+    return <div>Error: Length converter not found.</div>
+  }
+
+  return <ConverterPage category={lengthCategory} />
 }
