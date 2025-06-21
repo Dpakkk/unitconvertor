@@ -16,8 +16,8 @@ export function Footer() {
               <Image
                 src="/logo.svg"
                 alt="UnitConvertor Logo"
-                width={120}
-                height={120}
+                width={150}
+                height={150}
               />
             </Link>
             <p className="text-muted-foreground max-w-xs text-sm">

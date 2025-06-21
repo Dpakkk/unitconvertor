@@ -13,6 +13,9 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   title: 'Unit Convertor',
   description: 'A simple unit convertor built with Next.js and Tailwind CSS.',
+  icons: {
+    icon: '/icon.ico',
+  },
 }
 
 export default function RootLayout({
