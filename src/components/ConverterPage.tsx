@@ -65,7 +65,7 @@ export function ConverterPage({ category }: Props) {
               </button>
 
               {isOpen && (
-                <div className="bg-card absolute z-10 mt-1 w-full rounded-md border shadow-lg">
+                <div className="absolute z-10 mt-1 w-full rounded-md border bg-white shadow-lg dark:bg-gray-800">
                   <ul className="py-1">
                     {conversions.map((cat) => (
                       <li key={cat.path}>

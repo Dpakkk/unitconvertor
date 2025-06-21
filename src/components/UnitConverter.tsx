@@ -179,7 +179,7 @@ export function UnitConverter({ category }: Props) {
             id="from-unit"
             value={fromUnit.symbol}
             onChange={handleFromUnitChange}
-            className="mb-2 w-full rounded border bg-transparent p-2"
+            className="mb-2 w-full rounded border bg-white p-2 dark:bg-gray-800"
           >
             {category.units.map((unit) => (
               <option key={unit.symbol} value={unit.symbol}>
@@ -192,7 +192,7 @@ export function UnitConverter({ category }: Props) {
             aria-label="From Value"
             value={fromValue}
             onChange={handleFromValueChange}
-            className="w-full rounded border bg-transparent p-2"
+            className="w-full rounded border bg-white p-2 dark:bg-gray-800"
           />
         </div>
         <div>
@@ -206,7 +206,7 @@ export function UnitConverter({ category }: Props) {
             id="to-unit"
             value={toUnit.symbol}
             onChange={handleToUnitChange}
-            className="mb-2 w-full rounded border bg-transparent p-2"
+            className="mb-2 w-full rounded border bg-white p-2 dark:bg-gray-800"
           >
             {category.units.map((unit) => (
               <option key={unit.symbol} value={unit.symbol}>
@@ -219,7 +219,7 @@ export function UnitConverter({ category }: Props) {
             aria-label="To Value"
             value={toValue}
             onChange={handleToValueChange}
-            className="w-full rounded border bg-transparent p-2"
+            className="w-full rounded border bg-white p-2 dark:bg-gray-800"
           />
         </div>
       </div>
