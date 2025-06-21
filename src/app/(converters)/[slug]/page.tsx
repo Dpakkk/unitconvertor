@@ -9,14 +9,12 @@ import { AreaPageContent } from '@/components/AreaPageContent'
 import { VolumePageContent } from '@/components/VolumePageContent'
 import { TimePageContent } from '@/components/TimePageContent'
 
-type Props = {
-  params: {
-    slug: string
-  }
-}
-
-export async function generateMetadata(props: Props): Promise<Metadata> {
-  const { slug } = props.params
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}): Promise<Metadata> {
+  const { slug } = params
   const categoryData = conversions.find((c) => c.path === `/${slug}`)
 
   if (!categoryData) {
@@ -33,8 +31,12 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 // Main component for the category page
-export default async function CategoryPage(props: Props) {
-  const { slug } = props.params
+export default async function CategoryPage({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  const { slug } = params
   const categoryData = conversions.find((c) => c.path === `/${slug}`)
 
   if (!categoryData) {
