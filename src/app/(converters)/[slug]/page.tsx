@@ -12,9 +12,9 @@ import { TimePageContent } from '@/components/TimePageContent'
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }): Promise<Metadata> {
-  const { slug } = params
+  const { slug } = await params
   const categoryData = conversions.find((c) => c.path === `/${slug}`)
 
   if (!categoryData) {
@@ -34,9 +34,9 @@ export async function generateMetadata({
 export default async function CategoryPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const { slug } = params
+  const { slug } = await params
   const categoryData = conversions.find((c) => c.path === `/${slug}`)
 
   if (!categoryData) {
