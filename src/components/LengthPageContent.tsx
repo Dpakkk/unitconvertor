@@ -127,6 +127,61 @@ export function LengthPageContent() {
 
         <section>
           <h2 className="mb-4 text-3xl font-bold tracking-tight">
+            How Length Conversion Works: Simple Principles
+          </h2>
+          <div className="text-muted-foreground space-y-4">
+            <p>
+              While our converter does the heavy lifting, knowing the basic
+              principles can help you understand the relationships between
+              different length units:
+            </p>
+            <p>
+              To convert from a <span className="font-semibold">larger</span>{' '}
+              unit to a <span className="font-semibold">smaller</span> unit, you{' '}
+              <span className="text-primary/80 font-semibold">multiply</span> by
+              the conversion factor (e.g., feet to inches, multiply by 12). To
+              convert from a <span className="font-semibold">smaller</span> unit
+              to a <span className="font-semibold">larger</span> unit, you{' '}
+              <span className="text-primary/80 font-semibold">divide</span> by
+              the conversion factor (e.g., inches to feet, divide by 12).
+            </p>
+            <p>Let&apos;s look at some quick examples:</p>
+            <div className="space-y-2">
+              <div className="rounded-lg border bg-gray-50 p-3 dark:bg-gray-800/50">
+                <p className="font-mono text-sm">
+                  <span className="font-semibold">
+                    Convert 5 feet to inches:
+                  </span>
+                  <br />
+                  Since 1 foot = 12 inches, we multiply: 5 × 12 = 60 inches.
+                </p>
+              </div>
+              <div className="rounded-lg border bg-gray-50 p-3 dark:bg-gray-800/50">
+                <p className="font-mono text-sm">
+                  <span className="font-semibold">
+                    Convert 500 centimeters to meters:
+                  </span>
+                  <br />
+                  Since 1 meter = 100 centimeters, we divide: 500 ÷ 100 = 5
+                  meters.
+                </p>
+              </div>
+              <div className="rounded-lg border bg-gray-50 p-3 dark:bg-gray-800/50">
+                <p className="font-mono text-sm">
+                  <span className="font-semibold">
+                    Convert 10 kilometers to miles:
+                  </span>
+                  <br />
+                  Since 1 mile ≈ 1.609 kilometers, we divide: 10 ÷ 1.609 ≈ 6.21
+                  miles.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight">
             Your Most Asked-For Length Conversions
           </h2>
           <p className="text-muted-foreground mb-4">

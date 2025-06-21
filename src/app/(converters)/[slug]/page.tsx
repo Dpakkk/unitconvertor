@@ -15,8 +15,9 @@ type Props = {
   }
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const categoryData = conversions.find((c) => c.path === `/${params.slug}`)
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const { slug } = props.params
+  const categoryData = conversions.find((c) => c.path === `/${slug}`)
 
   if (!categoryData) {
     return {
@@ -32,8 +33,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 // Main component for the category page
-export default function CategoryPage({ params }: Props) {
-  const categoryData = conversions.find((c) => c.path === `/${params.slug}`)
+export default async function CategoryPage(props: Props) {
+  const { slug } = props.params
+  const categoryData = conversions.find((c) => c.path === `/${slug}`)
 
   if (!categoryData) {
     notFound()

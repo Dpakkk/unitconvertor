@@ -134,6 +134,62 @@ export function WeightPageContent() {
 
         <section>
           <h2 className="mb-4 text-3xl font-bold tracking-tight">
+            How Weight Conversion Works: Simple Principles
+          </h2>
+          <div className="text-muted-foreground space-y-4">
+            <p>
+              While our converter does the heavy lifting, knowing the basic
+              principles can help you understand the relationships between
+              different weight units:
+            </p>
+            <p>
+              To convert from a <span className="font-semibold">larger</span>{' '}
+              unit to a <span className="font-semibold">smaller</span> unit, you{' '}
+              <span className="text-primary/80 font-semibold">multiply</span> by
+              the conversion factor (e.g., kilograms to grams, multiply by
+              1,000). To convert from a{' '}
+              <span className="font-semibold">smaller</span> unit to a{' '}
+              <span className="font-semibold">larger</span> unit, you{' '}
+              <span className="text-primary/80 font-semibold">divide</span> by
+              the conversion factor (e.g., ounces to pounds, divide by 16).
+            </p>
+            <p>Let&apos;s look at some quick examples:</p>
+            <div className="space-y-2">
+              <div className="rounded-lg border bg-gray-50 p-3 dark:bg-gray-800/50">
+                <p className="font-mono text-sm">
+                  <span className="font-semibold">
+                    Convert 2 kilograms to grams:
+                  </span>
+                  <br />
+                  Since 1 kilogram = 1,000 grams, we multiply: 2 × 1,000 = 2,000
+                  grams.
+                </p>
+              </div>
+              <div className="rounded-lg border bg-gray-50 p-3 dark:bg-gray-800/50">
+                <p className="font-mono text-sm">
+                  <span className="font-semibold">
+                    Convert 32 ounces to pounds:
+                  </span>
+                  <br />
+                  Since 1 pound = 16 ounces, we divide: 32 ÷ 16 = 2 pounds.
+                </p>
+              </div>
+              <div className="rounded-lg border bg-gray-50 p-3 dark:bg-gray-800/50">
+                <p className="font-mono text-sm">
+                  <span className="font-semibold">
+                    Convert 150 pounds to kilograms:
+                  </span>
+                  <br />
+                  Since 1 pound ≈ 0.453592 kilograms, we multiply: 150 ×
+                  0.453592 ≈ 68.04 kilograms.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight">
             Your Most Asked-For Weight Conversions
           </h2>
           <p className="text-muted-foreground mb-4">

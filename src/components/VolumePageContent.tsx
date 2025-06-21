@@ -118,6 +118,62 @@ export function VolumePageContent() {
 
         <section>
           <h2 className="mb-4 text-3xl font-bold tracking-tight">
+            How Volume Conversion Works: Simple Principles
+          </h2>
+          <div className="text-muted-foreground space-y-4">
+            <p>
+              While our converter does the heavy lifting, knowing the basic
+              principles can help you understand the relationships between
+              different volume units:
+            </p>
+            <p>
+              To convert from a <span className="font-semibold">larger</span>{' '}
+              unit to a <span className="font-semibold">smaller</span> unit, you{' '}
+              <span className="text-primary/80 font-semibold">multiply</span> by
+              the conversion factor (e.g., gallons to quarts, multiply by 4). To
+              convert from a <span className="font-semibold">smaller</span> unit
+              to a <span className="font-semibold">larger</span> unit, you{' '}
+              <span className="text-primary/80 font-semibold">divide</span> by
+              the conversion factor (e.g., milliliters to liters, divide by
+              1,000).
+            </p>
+            <p>Let&apos;s look at some quick examples:</p>
+            <div className="space-y-2">
+              <div className="rounded-lg border bg-gray-50 p-3 dark:bg-gray-800/50">
+                <p className="font-mono text-sm">
+                  <span className="font-semibold">
+                    Convert 3 liters to milliliters:
+                  </span>
+                  <br />
+                  Since 1 liter = 1,000 milliliters, we multiply: 3 × 1,000 =
+                  3,000 milliliters.
+                </p>
+              </div>
+              <div className="rounded-lg border bg-gray-50 p-3 dark:bg-gray-800/50">
+                <p className="font-mono text-sm">
+                  <span className="font-semibold">
+                    Convert 8 quarts to gallons:
+                  </span>
+                  <br />
+                  Since 1 gallon = 4 quarts, we divide: 8 ÷ 4 = 2 gallons.
+                </p>
+              </div>
+              <div className="rounded-lg border bg-gray-50 p-3 dark:bg-gray-800/50">
+                <p className="font-mono text-sm">
+                  <span className="font-semibold">
+                    Convert 500 milliliters to fluid ounces:
+                  </span>
+                  <br />
+                  Since 1 fluid ounce ≈ 29.574 milliliters, we divide: 500 ÷
+                  29.574 ≈ 16.9 fluid ounces.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight">
             Your Most Asked-For Volume Conversions
           </h2>
           <p className="text-muted-foreground mb-4">

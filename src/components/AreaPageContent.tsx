@@ -124,6 +124,64 @@ export function AreaPageContent() {
 
         <section>
           <h2 className="mb-4 text-3xl font-bold tracking-tight">
+            How Area Conversion Works: Simple Principles
+          </h2>
+          <div className="text-muted-foreground space-y-4">
+            <p>
+              While our converter does the heavy lifting, knowing the basic
+              principles can help you understand the relationships between
+              different area units:
+            </p>
+            <p>
+              To convert from a <span className="font-semibold">larger</span>{' '}
+              unit to a <span className="font-semibold">smaller</span> unit, you{' '}
+              <span className="text-primary/80 font-semibold">multiply</span> by
+              the conversion factor (e.g., square feet to square inches,
+              multiply by 144). To convert from a{' '}
+              <span className="font-semibold">smaller</span> unit to a{' '}
+              <span className="font-semibold">larger</span> unit, you{' '}
+              <span className="text-primary/80 font-semibold">divide</span> by
+              the conversion factor (e.g., square feet to acres, divide by
+              43,560).
+            </p>
+            <p>Let&apos;s look at some quick examples:</p>
+            <div className="space-y-2">
+              <div className="rounded-lg border bg-gray-50 p-3 dark:bg-gray-800/50">
+                <p className="font-mono text-sm">
+                  <span className="font-semibold">
+                    Convert 2 acres to square feet:
+                  </span>
+                  <br />
+                  Since 1 acre = 43,560 square feet, we multiply: 2 × 43,560 =
+                  87,120 square feet.
+                </p>
+              </div>
+              <div className="rounded-lg border bg-gray-50 p-3 dark:bg-gray-800/50">
+                <p className="font-mono text-sm">
+                  <span className="font-semibold">
+                    Convert 500 square meters to square feet:
+                  </span>
+                  <br />
+                  Since 1 square meter ≈ 10.764 square feet, we multiply: 500 ×
+                  10.764 ≈ 5,382 square feet.
+                </p>
+              </div>
+              <div className="rounded-lg border bg-gray-50 p-3 dark:bg-gray-800/50">
+                <p className="font-mono text-sm">
+                  <span className="font-semibold">
+                    Convert 2 hectares to acres:
+                  </span>
+                  <br />
+                  Since 1 hectare ≈ 2.471 acres, we multiply: 2 × 2.471 ≈ 4.942
+                  acres.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight">
             Your Most Asked-For Area Conversions
           </h2>
           <p className="text-muted-foreground mb-4">
