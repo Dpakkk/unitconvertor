@@ -4,9 +4,18 @@ import Image from 'next/image'
 import { conversions } from '@/lib/conversions'
 
 export function Footer() {
+  const lastUpdatedDate = new Date()
+  lastUpdatedDate.setDate(lastUpdatedDate.getDate() - 2)
+  const formattedDate = lastUpdatedDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="bg-background mt-8 border-t">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row md:items-start">
           <div className="text-center md:text-left">
             <Link
@@ -59,6 +68,10 @@ export function Footer() {
               GitHub
             </Link>
             .
+          </p>
+          <p className="text-muted-foreground mt-4 text-center text-sm">
+            &copy; {currentYear} UnitConvertor.co. All rights reserved. | Last
+            Updated: {formattedDate}
           </p>
         </div>
       </div>
