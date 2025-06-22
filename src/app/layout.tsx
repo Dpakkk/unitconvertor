@@ -4,7 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
-import GoogleAnalytics from '@/components/GoogleAnalytics'
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -27,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} antialiased`}>
-        <GoogleAnalytics />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -38,6 +37,7 @@ export default function RootLayout({
           <main className="flex-grow">{children}</main>
           <Footer />
         </ThemeProvider>
+        <GoogleTagManager gtmId="G-9ZP5EN5CBH" />
       </body>
     </html>
   )

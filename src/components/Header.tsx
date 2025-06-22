@@ -21,6 +21,7 @@ export function Header() {
             alt="UnitConvertor Logo"
             width={239}
             height={239}
+            priority
           />
         </Link>
         <nav className="hidden gap-4 md:flex">
