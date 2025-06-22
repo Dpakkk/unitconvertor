@@ -44,11 +44,7 @@ export function Footer() {
                 {conversions.slice(0, 3).map((category) => (
                   <li key={category.path}>
                     <Link
-                      href={
-                        category.path === '/length-converter'
-                          ? '/'
-                          : category.path
-                      }
+                      href={category.path}
                       className="text-muted-foreground hover:text-primary text-sm transition-colors"
                     >
                       {category.name}
