@@ -1,5 +1,5 @@
-import { conversions } from '@/lib/conversions'
-import { notFound } from 'next/navigation'
+import { conversions, Unit, ConversionCategory } from '@/lib/conversions'
+import { notFound, redirect } from 'next/navigation'
 import { ConverterPage } from '@/components/ConverterPage'
 import { LengthPageContent } from '@/components/LengthPageContent'
 import { WeightPageContent } from '@/components/WeightPageContent'
@@ -8,27 +8,81 @@ import { AreaPageContent } from '@/components/AreaPageContent'
 import { VolumePageContent } from '@/components/VolumePageContent'
 import { TimePageContent } from '@/components/TimePageContent'
 import { Metadata } from 'next'
+import levenshtein from 'js-levenshtein'
 
-// Helper function to find a unit by its name (singular/plural) or symbol.
-const findUnit = (unitIdentifier: string) => {
-  const normalizedIdentifier = unitIdentifier.toLowerCase()
+// Gets the "clean" name for a unit, to be used for matching.
+// e.g., "Gallon (US)" -> "gallon", "Square Foot" -> "square foot"
+const getCleanUnitName = (name: string) => {
+  return name
+    .toLowerCase()
+    .replace(/ \(.+\)$/, '')
+    .trim()
+}
+
+// Creates a URL-friendly slug from a unit name.
+// e.g., "Gallon (US)" -> "gallon-us", "Square Foot" -> "square-foot"
+const getUnitSlug = (name: string) => {
+  return name
+    .toLowerCase()
+    .replace(/ \(/g, '-')
+    .replace(/\)/g, '')
+    .replace(/ /g, '-')
+}
+
+// Helper function to find a unit by its name, symbol, or alias.
+const findUnit = (unitIdentifier: string, fuzzy = false) => {
+  const normalizedIdentifier = unitIdentifier.toLowerCase().replace(/-/g, '')
+  let bestMatch: {
+    unit: Unit
+    category: ConversionCategory
+    distance: number
+  } | null = null
+
   for (const category of conversions) {
     for (const unit of category.units) {
-      const unitName = unit.name.toLowerCase()
+      const cleanUnitName = getCleanUnitName(unit.name) // "gallon"
       const unitSymbol = unit.symbol.toLowerCase()
-      // Check symbol: 'km' === 'km'
-      if (unitSymbol === normalizedIdentifier) {
-        return { unit, category }
+
+      const candidates = [
+        cleanUnitName,
+        `${cleanUnitName}s`, // plural
+        unitSymbol,
+      ]
+
+      // Add common abbreviations for multi-word units
+      if (cleanUnitName.startsWith('square')) {
+        const parts = cleanUnitName.split(' ')
+        candidates.push(`sq${parts[1]}`) // "sqmeter"
+        candidates.push(`sq-${parts[1]}`) // "sq-meter" - handled by normalizer
       }
-      // Check name: 'mile' === 'mile', or plural form: 'miles' === 'mile' + 's'
-      if (
-        unitName === normalizedIdentifier ||
-        unitName + 's' === normalizedIdentifier
-      ) {
-        return { unit, category }
+      if (cleanUnitName.startsWith('fluid')) {
+        candidates.push(`fl${cleanUnitName.split(' ')[1]}`) // "flounce"
+      }
+
+      for (const candidate of candidates) {
+        if (!candidate) continue
+        const distance = levenshtein(normalizedIdentifier, candidate)
+
+        // Exact match is always best
+        if (distance === 0) {
+          return { unit, category, distance: 0 }
+        }
+
+        // If fuzzy matching, find the closest candidate
+        if (fuzzy) {
+          if (!bestMatch || distance < bestMatch.distance) {
+            bestMatch = { unit, category, distance }
+          }
+        }
       }
     }
   }
+
+  // Only return a fuzzy match if it's reasonably close
+  if (bestMatch && bestMatch.distance < 3) {
+    return bestMatch
+  }
+
   return null
 }
 
@@ -111,14 +165,28 @@ export default async function SlugPage({
         ? fromPart.substring(fromValueMatch[1].length).replace(/^-/, '')
         : fromPart
 
-      const fromData = findUnit(fromUnitIdentifier)
-      const toData = findUnit(toUnitIdentifier)
+      const fromData = findUnit(fromUnitIdentifier, true)
+      const toData = findUnit(toUnitIdentifier, true)
 
       if (
         fromData &&
         toData &&
         fromData.category.name === toData.category.name
       ) {
+        // We need to redirect if a fuzzy match was used, or if the slug
+        // doesn't match the canonical slug format.
+        const canonicalSlug = `${fromValue}-${getUnitSlug(
+          fromData.unit.name,
+        )}-to-${getUnitSlug(toData.unit.name)}`
+
+        const needsRedirect =
+          fromData.distance > 0 || toData.distance > 0 || slug !== canonicalSlug
+
+        if (needsRedirect) {
+          return redirect(`/${canonicalSlug}`)
+        }
+
+        // If URL is correct, render the page
         const categoryData = fromData.category
         return (
           <>
