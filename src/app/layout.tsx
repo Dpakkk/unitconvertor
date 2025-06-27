@@ -12,8 +12,9 @@ const geistSans = Geist({
 })
 
 export const metadata: Metadata = {
-  title: 'Unit Convertor',
-  description: 'A simple unit convertor built with Next.js and Tailwind CSS.',
+  title: 'Length, Weight, Time, Area, Volume and Temperature Converter',
+  description:
+    'Convert length, weight, temperature, area, volume, and time. A fast, best among all available online and easy-to-use online tool for all your conversion needs.',
   icons: {
     icon: '/icon.ico',
   },

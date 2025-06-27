@@ -132,7 +132,14 @@ export async function generateMetadata({
   const categoryData = conversions.find((c) => c.path.substring(1) === slug)
   if (categoryData) {
     const title = `${categoryData.name} Converter`
-    const description = `Convert units of ${categoryData.name.toLowerCase()} such as miles, kilometers, meters, and more with our free online converter.`
+
+    // Dynamically generate a list of a few example units for the description
+    const exampleUnits = categoryData.units
+      .slice(0, 4)
+      .map((u) => u.name)
+      .join(', ')
+
+    const description = `Convert units of ${categoryData.name.toLowerCase()} such as ${exampleUnits}, and more with our online converter.`
     return {
       title: title,
       description,
